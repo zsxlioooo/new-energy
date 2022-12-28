@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light Theme</title>
+<link href="css/singlePageTemplate.css" rel="stylesheet" type="text/css">
+
+<script>var __adobewebfontsappname__="dreamweaver"</script>
+<script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+
+</head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>滚动式轮播图</title>
+  <style>
+  *{
+      margin: 0;
+      padding: 0;
+    }
+    #wrap{
+      width: 1535px;
+      height: 380px;
+    }
+   #wrap .picBox{
+    width: 1535px;
+    height: 340px;
+    overflow:hidden;
+    cursor: pointer;
+   }
+   #picBox{
+     width: 15000px;
+     height: 3400px;
+     transition: all 0.5s;
+   }
+   #picBox li{
+    float: left;
+    list-style: none;
+   }
+   #picBox li img{
+     display: block;
+   }
+   #picNav li{
+     width: 164px;
+     height: 40px;
+     float: left;
+     list-style: none;
+     line-height: 40px;
+     text-align: center;
+     font-size: 14px;
+     background-color: #e3e2e2;
+   }
+   #picNav .active{
+     border-bottom: 2px #cea861 solid;
+     background-color: white;
+     height: 38px;
+     color: #ab8e66;
+   }
+  </style>
+<body>
+
+<div class="container"> 
+  
+  <header> <a href="">
+    <h4 class="logo"><a href="index.html">首页&nbsp;</a></h4>
+  </a>
+    <nav>
+      <ul>
+        <li><a href="http://www.newenergy.org.cn/xnyjz/yjdt/" target="_blank">研究动态&nbsp;</a></li>
+        <li><a href="pg3.html">新能源&nbsp;</a></li>
+        <li> <a href="2-1.html">绿色低碳</a></li>
+		<li> <a href="http://www.newenergy.org.cn/zcfg/" target="_blank">政策</a></li>
+		<li> <a href="关于本站.html">关于本站</a></li>
+		<li> <a href="评论区.html" target="_blank">留言</a></li>
+        <li>&nbsp;</li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <div id="wrap">
+     <div class="picBox">
+      <ul id="picBox">
+        <li><a href="地热能.html"><img style="width: 1535px;height: 380px" src="77022c300520237a6b57cf512195009c.jpeg" alt=""></a></li>
+		  
+        <li><a href="潮汐能.html"><img style="width: 1535px;height: 380px" src="37ae9f0dd9398ba9e2904db5ffc83f63.jpeg " alt=""></a></li>
+		  
+        <li><a href="水能.html"><img style="width: 1535px;height: 380px" src="518e05d9c7a2f7381fe5cae1333a885a.jpeg" alt=""></a></li>
+		  
+        <li><a href="核能.html"><img style="width: 1535px;height: 380px" src="adee6677fa1885b221f8bb1a829adf5c.jpeg" alt=""></a></li>
+		   
+        <li><a href="太阳能.html"><img style="width: 1535px;height: 380px" src="dd2744f0a3e772f0f2e80d1358a53222.jpg" alt=""></a></li>
+      </ul>
+     </div>
+     <div class="picNav">
+      <ul id="picNav">
+        <li class="active">地热能&nbsp;&nbsp;</li>
+        <li>潮汐能&nbsp;</li>
+        <li>水能&nbsp;</li>
+        <li>核能&nbsp;</li>
+        <li>太阳能&nbsp;</li>
+      </ul>
+     </div>
+  </div>
+  <script>
+    
+       var picNav=document.getElementById("picNav")
+      
+       var picNavLis=picNav.getElementsByTagName("li")
+       var index=0 
+      function change(){     
+        console.log(1)
+         if(index==4){  
+           index=0      
+         }else{
+          index++       
+         }
+         
+         for(var n=0;n<picNavLis.length;n++){
+           picNavLis[n].className=""
+         }
+         
+         picNavLis[this.index].className="active"
+         
+         picBox.style.marginLeft=-this.index*1535+"px"
+       }
+       var t=setInterval(change,2500)   
+      
+       for(var n=0;n<picNavLis.length;n++){
+         
+        picNavLis[n].index=n
+        picNavLis[n].onmouseenter=function(){
+         
+          for(var j=0;j<picNavLis.length;j++){
+            picNavLis[j].className=""
+          }
+         
+          picNavLis[this.index].className="active"
+        
+          console.log(this.index)
+         
+          picBox.style.marginLeft=-this.index*1535+"px"
+          index=this.index
+                          
+        }
+       }
+      
+       var wrap=document.getElementById("wrap")
+       // 当鼠标进入这个轮播图时,终止自动轮播
+       wrap.onmouseenter=function(){
+          clearInterval(t)
+       }
+       // 当鼠标离开轮播图时候,开始自动轮播
+       wrap.onmouseleave=function(){
+         t=setInterval(change,2500)
+       }
+  </script>
+	
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2 class="hidden">About</h2>
+	  <p class="text_column">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;关于本站<br>
+      <a href="关于本站.html"><img style="width: 420px;height: 250px" src="e68d7eda95734dea62ce4aa66aee929a.jpeg" alt=""></a>&nbsp; </p>
+    <p class="text_column">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;绿色低碳<br>
+    <a href="2-1.html"><img style="width: 420px;height: 250px" src="c15c290caf949e278e959c36e33e5e55.jpeg" alt=""></a></p>
+    <p class="text_column">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;政策&nbsp; &nbsp; <br>
+    <a href="http://www.newenergy.org.cn/zcfg/" target="_blank"><img style="width: 420px;height: 250px" src="bb6353c626acfe422772c134458eef5c.jpg" alt=""></a></p>
+  </section>
+  <!-- Stats Gallery Section -->
+  <!-- Parallax Section -->
+  <section class="banner">
+	  <img  style="width: 1535px" src="e0e9181588b01541d144982e72acb8da.jpg" alt="">
+    <h2 class="parallax">PARALLAX HERO</h2>
+    <p class="parallax_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  </section>
+  <!-- More Info Section -->
+  <footer>
+    <article class="footer_column">
+      <h3>新能源介绍&nbsp;</h3>
+      <a href="pg3.html"><img src="79d898a373e1726e41baabf16c3f6c5d.jpeg" alt="" width="1000" height="500" class="cards"></a>
+<p>新能源( NE）：又称非常规能源。是指传统能源之外的各种能源形式。指刚开始开发利用或正在积极研究、有待推广的能源，如太阳能、地热能、风能、海洋能、生物质能和核聚变能等。 </p>
+    </article>
+    <article class="footer_column">
+      <h3>新能源发展前景&nbsp;</h3>
+      <a href="新能源发展前景.html"><img src="7b8c935dc2c6dc2114e47b97217d1260.jpeg" alt="" width="640" height="320" class="cards"></a>
+<p>新能源是未来世界的主体能源，一国新能源产业的发展好坏将直接影响其在世界经济中的地位。发展替代能源，实现传统能源和新能源之间的替代是解决当前世界能源供需瓶颈、供需结构性矛盾以及减轻环境压力的有效途径，也是世界可持续性发展的基本保障。 </p>
+    </article>
+  </footer>
+  <!-- Footer Section -->
+  <section class="footer_banner" id="contact">
+    <h2 class="hidden">Footer Banner Section </h2>
+    <p class="hero_header">新能源发展势不可挡</p>
+</section>
+  <!-- Copyrights Section -->
+  <div class="copyright">&copy;2022-ZSX&nbsp; <strong>&nbsp;</strong></div>
+</div>
+<!-- Main Container Ends -->
+</body>
+</html>
