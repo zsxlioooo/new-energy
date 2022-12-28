@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style type="text/css">
+.wrap {
+width: 400px;
+margin: 30px auto;
+}
+textarea {
+display: block;
+width: 100%;
+height: 60px；border:1px}
+input {
+display: block;
+width: 60%;
+margin: 15px auto;
+}
+li {
+padding: 5px 10px;
+position: relative;
+word-break: break-all;
+}
+.red {
+color: #000;
+background: #f1f1f1;
+} 
+.pink {
+color: #000;
+background: #ccc;
+}
+a {
+position: absolute;
+right: 0;
+top: -20px;
+background: yellow;
+color: #fff;
+} 
+#list {
+margin: 0;
+padding: 0;
+list-style: none;
+font: 14px/26px "宋体";
+}
+.clos {
+position: absolute;
+top: 0;
+right: -50px;
+width: 50px;
+color: #fff;
+background: #000;
+padding: 5px 0;
+text-decoration: none;
+text-align: center;
+}
+.clos:hover {
+box-shadow: 0 0 5px rgba(0,0,0,.5)
+}
+body {
+	background-image: url(e01458af42f28ab394c6174a3cff4aad.jpeg);
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+var btn = document.querySelector('input');
+var text = document.querySelector('textarea');
+var list = document.querySelector('#list');
+var colors = ["red","pink"];
+var nub = 0;
+btn.onclick = function(){
+if(text.value.trim() == ""){
+alert("打点字吧");
+return false;
+}
+var li = document.createElement("li");
+li.innerHTML = text.value;
+// li.className = colors[nub%colors.length];
+/* 判断a标签已经被添加，就让a标签显示出来，否则就添加 */
+if(list.children[0]&&list.children[0].className=="red"){
+li.className = "pink";
+} else {
+li.className = "red";
+}
+var a = null;
+li.onmouseover = function(){
+if(a) {
+a.style.display = "block";
+} else {
+a = document.createElement("a");
+a.href = "javascript:;";
+a.className = "clos";
+a.innerHTML = "删除";
+a.onclick = function (){
+list.removeChild(this.parentNode);
+};
+this.appendChild(a);
+}
+};
+li.onmouseout = function(){
+a.style.display = "none";
+};
+list.insertBefore(li,list.children[0]);
+text.value = "";
+nub++;
+};
+}; 
+</script>
+</head>
+	
+	
+	
+<body>
+	<audio autoplay controls loop preload="auto" src="🎹 Piano (Royalty Free Music) - 'ROSALITA' by The Piano Says 🇨🇦.mp3"></audio>
+	<h1 align="center">留言</h1>
+<div>
+<div class="wrap">
+<textarea id="text"></textarea>
+<input type="button" value="留言">
+<ul id="list"></ul>
+</div> 
+	</div>
+</body>
+</html>
